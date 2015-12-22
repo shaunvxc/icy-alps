@@ -7,38 +7,34 @@ public class IcyAlpsGameController : MonoBehaviour
 
     public delegate void TilesDrawnEvent();
     public static event TilesDrawnEvent TilesDrawn;
-    
+
     public Transform baseTile;
-    
+
     public float LeftBoundary;
     public float RightBoundary;
     public float BottomBoundary;
-    public float TopBoundary; 
+    public float TopBoundary;
 
-    
-    void Awake() { 
-	if (Instance == null) { 
+    void Awake() {
+	if (Instance == null) {
 	    Instance = this;
 	}
     }
-    
+
     void Start () {
 	constructLevel ();
-	
     }
-    
+
     void Update ()
     {
-	
+
     }
-    
-    
+
     private void constructLevel() {
 	for (float i = BottomBoundary; i < TopBoundary; i++) {
 	    for (float j = LeftBoundary; j < RightBoundary; j++) {
-		var tile = ObjectPoolManager.CreatePooled (baseTile.gameObject, new Vector3 (j, i, 2F),  Quaternion.identity);	
+		var tile = ObjectPoolManager.CreatePooled (baseTile.gameObject, new Vector3 (j, i, 2F),  Quaternion.identity);
 	    }
 	}
     }
 }
-
