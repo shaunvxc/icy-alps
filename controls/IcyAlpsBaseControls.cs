@@ -1,18 +1,19 @@
 using UnityEngine;
 using System.Collections;
+
 /**
  *
  * Base controls script for icy alps
  */
 public class IcyAlpsBaseControls : MonoBehaviour
 {
+
   public virtual bool isMoving ()
   {
     Debug.Log ("Error! Using controls script with no implementation of isMoving()-- this means the controls will not be responsive!");
     return false;
   }
 
-  // would be nice to require this method to be overridden!
   public virtual bool isMovingRight () {
     Debug.Log ("Error! Using controls script with no implementation of isMovingRight()-- this means the controls will not be responsive!");
     return false;
@@ -23,10 +24,6 @@ public class IcyAlpsBaseControls : MonoBehaviour
     Debug.Log ("Error! Using controls script with no implementation of isMovingLeft()-- this means the controls will not be responsive!");
     return false;
   }
-
-  /*
-     Events/delegates to manage the speed of the level based on the players behaviors (aka the players controls)
-  */
 
   // these fire when the player straightens out downhill (ie not using the controls )
   public delegate void SpeedUpEvent();
@@ -59,7 +56,6 @@ public class IcyAlpsBaseControls : MonoBehaviour
 
   void Update ()
   {
-
     if (isMoving()) {
       if (isMovingLeft()) {
  	moveLeft();
@@ -85,12 +81,12 @@ public class IcyAlpsBaseControls : MonoBehaviour
 
   private void moveLeft() {
     if ( _transform.localRotation.eulerAngles.z > 0F && _transform.localRotation.eulerAngles.z < 180F) {
-      _transform.position = new Vector2(_transform.position.x + movementRate, transform.position.y);
+      _transform.position = new Vector2(_transform.position.x + movementRate, _transform.position.y);
       _transform.Rotate(_transform.localRotation * new Vector3(0, 0, -.5F));
       SpeedUp();
     }
     else {
-      _transform.position = new Vector2(_transform.position.x - movementRate, transform.position.y);
+      _transform.position = new Vector2(_transform.position.x - movementRate, _transform.position.y);
       _transform.Rotate(_transform.localRotation * new Vector3(0, 0, -.5F));
       SlowDown();
     }
@@ -98,12 +94,12 @@ public class IcyAlpsBaseControls : MonoBehaviour
 
   private void moveRight() {
     if ( _transform.localRotation.eulerAngles.z > 180F && _transform.localRotation.eulerAngles.z < 360F) {
-      _transform.position = new Vector2(_transform.position.x - movementRate, transform.position.y);
+      _transform.position = new Vector2(_transform.position.x - movementRate, _transform.position.y);
       _transform.Rotate(_transform.localRotation * new Vector3(0, 0, .5F));
       SpeedUp();
     }
     else {
-      _transform.position = new Vector2(_transform.position.x + movementRate, transform.position.y);
+      _transform.position = new Vector2(_transform.position.x + movementRate, _transform.position.y);
       _transform.Rotate(_transform.localRotation * new Vector3(0, 0, .5F));
       SlowDown();
     }
