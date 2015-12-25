@@ -65,17 +65,7 @@ public class IcyAlpsBaseControls : MonoBehaviour
       }
     }
     else {
-
-      // definitely don't NEED this check.. but should double check to make sure that calling Slerp when the object is already in postion
-      // does not have any serious overhead
-      if (_transform.localRotation.eulerAngles != new Vector3(0, 0, 0))  {
-	_transform.rotation = Quaternion.Slerp(_transform.localRotation, new Quaternion(0, 0, 0, 1F), Time.deltaTime * rotationSpeed);
-      }
-
-      // speed up once we straighten out!
-      if (SpeedUp != null) {
-	SpeedUp();
-      }
+      straightenOut();
     }
   }
 
@@ -104,4 +94,18 @@ public class IcyAlpsBaseControls : MonoBehaviour
       SlowDown();
     }
   }
+
+  private void straightenOut() {
+      // definitely don't NEED this check.. but should double check to make sure that calling Slerp when the object is already in postion
+      // does not have any serious overhead
+      if (_transform.localRotation.eulerAngles != new Vector3(0, 0, 0))  {
+	_transform.rotation = Quaternion.Slerp(_transform.localRotation, new Quaternion(0, 0, 0, 1F), Time.deltaTime * rotationSpeed);
+      }
+
+      // speed up once we straighten out!
+      if (SpeedUp != null) {
+	SpeedUp();
+      }
+  }
+
 }
