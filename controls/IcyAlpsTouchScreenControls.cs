@@ -30,8 +30,7 @@ public class IcyTouchScreenControls : IcyAlpsBaseControls
     for (int i = 0; i < Input.touchCount; i++) {
 
 	Touch touch = Input.GetTouch (i);
-	Vector2 touchPosition = touch.position;
-	touchPosition = Camera.main.ScreenToWorldPoint (touchPosition);
+	Vector2 touchPosition = Camera.main.ScreenToWorldPoint (touch.position);
 
 	if (touchPosition.x < 0) {
 	  return Direction.LEFT;
