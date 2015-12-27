@@ -16,7 +16,6 @@ public class IcyTile : MonoBehaviour
   private static readonly float _maxSpeed = .1F;
   private static readonly float _minSpeed =  0F;
 
-    
   void Awake ()
   {
     renderer = GetComponent<SpriteRenderer> ();
@@ -28,6 +27,7 @@ public class IcyTile : MonoBehaviour
     startYCoord = IcyAlpsGameController.Instance.BottomBoundary;
     destroyYCoord = IcyAlpsGameController.Instance.TopBoundary;
 
+    // register with events related to controls
     IcyAlpsBaseControls.SpeedUp  += speedUpTile;
     IcyAlpsBaseControls.SlowDown += slowDownTile;
   }
@@ -42,20 +42,19 @@ public class IcyTile : MonoBehaviour
     }
   }
 
-  void speedUpTile() {
+  private void speedUpTile() {
     if (movementRate < _maxSpeed) {
       movementRate += .0005F;
     }
   }
 
-  void slowDownTile() {
+  private void slowDownTile() {
     if(movementRate > _minSpeed) {
       movementRate -= .0005F;
     }
   }
-    
+
   public void setSprite(Sprite sprite) {
     renderer.sprite = sprite;
   }
-
 }
