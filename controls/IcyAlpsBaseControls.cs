@@ -32,9 +32,6 @@ public class IcyAlpsBaseControls : MonoBehaviour
   public static event SlowDownEvent SlowDown;
 
   public float movementRate;
-  public Quaternion localRotation;
-  public Vector3 eulerAngles;
-
   public string atlas;
   public float turnRate;
 
