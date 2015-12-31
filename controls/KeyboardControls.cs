@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class IcyAlpsKeyboardControls : IcyAlpsBaseControls
+public class KeyboardControls : IcyAlpsBaseControls
 {
   public override bool userInputDetected() {
     return (didLeftControlsFire() || didRightControlsFire());

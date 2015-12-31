@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class IcyTouchScreenControls : IcyAlpsBaseControls
+public class TouchScreenControls : IcyAlpsBaseControls
 {
 
   public override bool userInputDetected() {
