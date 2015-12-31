@@ -4,17 +4,15 @@ using System.Collections;
 public class IcyTouchScreenControls : IcyAlpsBaseControls
 {
 
-  public override bool isMoving()
-  {
+  public override bool userInputDetected() {
     return Input.touchCount > 0;
   }
 
-  public override bool isMovingLeft () {
+  public override bool didLeftControlsFire() {
     return getMovingDirection() == Direction.LEFT;
   }
 
-  public override bool isMovingRight()
-  {
+  public override bool didRightControlsFire() {
     return getMovingDirection() == Direction.RIGHT;
   }
     

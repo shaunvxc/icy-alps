@@ -3,17 +3,15 @@ using System.Collections;
 
 public class IcyAlpsKeyboardControls : IcyAlpsBaseControls
 {
-  public override bool isMoving()
-  {
-    return (isMovingLeft() || isMovingRight());
+  public override bool userInputDetected() {
+    return (didLeftControlsFire() || didRightControlsFire());
   }
 
-  public override bool isMovingLeft () {
+  public override bool didLeftControlsFire() {
     return Input.GetKey(KeyCode.LeftArrow);
   }
 
-  public override bool isMovingRight()
-  {
+  public override bool didRightControlsFire() {
     return Input.GetKey(KeyCode.RightArrow);
   }
 }

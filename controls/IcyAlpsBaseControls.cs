@@ -8,18 +8,18 @@ using System.Collections;
 public class IcyAlpsBaseControls : MonoBehaviour
 {
 
-  public virtual bool isMoving () {
-    Debug.Log ("Error! Using controls script with no implementation of isMoving()-- this means the controls will not be responsive!");
+  public virtual bool userInputDetected () {
+    Debug.Log ("Error! Using controls script with no implementation of userInputDetected()-- this means the controls will not be responsive!");
     return false;
   }
 
-  public virtual bool isMovingRight () {
-    Debug.Log ("Error! Using controls script with no implementation of isMovingRight()-- this means the controls will not be responsive!");
+  public virtual bool didRightControlsFire () {
+    Debug.Log ("Error! Using controls script with no implementation of didRightContolsFire()-- this means the controls will not be responsive!");
     return false;
   }
 
-  public virtual bool isMovingLeft () {
-    Debug.Log ("Error! Using controls script with no implementation of isMovingLeft()-- this means the controls will not be responsive!");
+  public virtual bool didLeftControlsFire () {
+    Debug.Log ("Error! Using controls script with no implementation of didLeftControlsFire()-- this means the controls will not be responsive!");
     return false;
   }
 
@@ -54,11 +54,11 @@ public class IcyAlpsBaseControls : MonoBehaviour
   }
 
   void Update () {
-    if (isMoving()) {
-      if (isMovingLeft()) {
+    if (userInputDetected()) {
+      if (didLeftControlsFire()) {
  	moveLeft();
       }
-      else if (isMovingRight()) {
+      else if (didRightControlsFire()) {
 	moveRight();
       }
     }
