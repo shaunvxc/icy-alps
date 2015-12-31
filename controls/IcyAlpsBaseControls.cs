@@ -27,18 +27,18 @@ public class IcyAlpsBaseControls : MonoBehaviour
   public delegate void SpeedUpEvent();
   public static event SpeedUpEvent SpeedUp;
 
-  // these fire when the player is turning (ie touching the screen, turning in some direction
+  // these fire when the player is turning (ie touching the screen, turning in some direction)
   public delegate void SlowDownEvent();
   public static event SlowDownEvent SlowDown;
 
   public float movementRate;
   public string atlas;
   public float turnRate;
+  public float rotationSpeed;
 
   private Transform _transform;
   private SpriteRenderer renderer;
   private Sprite[] sprites;
-  private float rotationSpeed = 1.2F;
 
   void Awake() {
     sprites = Resources.LoadAll<Sprite> (atlas);
