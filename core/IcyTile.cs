@@ -3,18 +3,13 @@ using System.Collections;
 
 public class IcyTile : MonoBehaviour
 {
-
-  private float movementRate = .02F;
+  private float movementRate;
 
   private SpriteRenderer renderer;
   private Transform _transform;
-  private  float   destroyYCoord;
-  private  float   startYCoord;
 
-  private bool active;
-
-  private static readonly float _maxSpeed = .1F;
-  private static readonly float _minSpeed =  0F;
+  private float destroyYCoord;
+  private float startYCoord;
 
   void Awake ()
   {
@@ -30,6 +25,7 @@ public class IcyTile : MonoBehaviour
     // register with events related to controls
     IcyAlpsBaseControls.SpeedUp  += speedUpTile;
     IcyAlpsBaseControls.SlowDown += slowDownTile;
+    PlayerCollisionDetector.PlayerDeath += stopTile;
   }
 
   // Update is called once per frame
@@ -43,15 +39,15 @@ public class IcyTile : MonoBehaviour
   }
 
   private void speedUpTile() {
-    if (movementRate < _maxSpeed) {
-      movementRate += .0005F;
-    }
+    movementRate = IcyAlpsGameController.Instance.gameSpeed;
   }
 
   private void slowDownTile() {
-    if(movementRate > _minSpeed) {
-      movementRate -= .0005F;
-    }
+    movementRate = IcyAlpsGameController.Instance.gameSpeed;
+  }
+
+  private void stopTile() {
+    movementRate = 0F;
   }
 
   public void setSprite(Sprite sprite) {

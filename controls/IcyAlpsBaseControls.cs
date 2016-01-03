@@ -40,20 +40,27 @@ public class IcyAlpsBaseControls : MonoBehaviour
   private SpriteRenderer renderer;
   private Sprite[] sprites;
 
+  private bool alive;
+
   void Awake() {
     sprites = Resources.LoadAll<Sprite> (atlas);
     _transform = transform;
+    alive = true;
   }
 
   void Start () {
     renderer = GetComponent<SpriteRenderer> ();
     renderer.sprite = sprites [0];
+    PlayerCollisionDetector.PlayerDeath += freezeControls;
   }
 
   void Update () {
+
+    if (!alive) { return; }
+
     if (userInputDetected()) {
       if (didLeftControlsFire()) {
- 	moveLeft();
+	moveLeft();
       }
       else if (didRightControlsFire()) {
 	moveRight();
@@ -103,4 +110,7 @@ public class IcyAlpsBaseControls : MonoBehaviour
     }
   }
 
+  private void freezeControls() {
+    alive = false;
+  }
 }
